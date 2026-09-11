@@ -22,6 +22,9 @@ body {
     padding: 40px 20px;
 }
 
+/* ==========================================
+   NAVIGATION / HEADER
+   ========================================== */
 header {
     background-color: rgba(255, 255, 255, 0.95);
     position: sticky;
@@ -113,114 +116,100 @@ nav ul.nav-links li a:hover {
     transition: all 0.3s ease;
 }
 
+/* ==========================================
+   HERO VIDEO HINTERGRUND
+   ========================================== */
+/* ==========================================
+   3. HERO VIDEO BEREICH (VOLLSTÄNDIGES OVERLAY)
+   ========================================== */
 .hero-section {
-    height: 100vh; 
     position: relative;
+    width: 100%;
+    height: 100vh;
+    height: 100svh;
+    min-height: 480px;
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.hero-slideshow {
+/* 1. Hintergrund-Video füllt 100% aus */
+.hero-bg-video {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 100%;
     height: 100%;
+    object-fit: cover;
+    object-position: center center;
     z-index: 1;
+    pointer-events: none;
 }
 
-.slide {
+/* 2. Dunkler Schleier: Zieht sich garantiert über das GANZE Video */
+.hero-overlay {
     position: absolute;
     top: 0;
     left: 0;
+    right: 0;
+    bottom: 0;
     width: 100%;
     height: 100%;
-    background-size: cover;
-    background-position: center;
-    opacity: 0;
-    animation: fadeSlideshow 15s infinite ease-in-out;
-}
-
-.slide-1 {
-    background-image: url('images/hero.jpg');
-    animation-delay: 0s;
-}
-
-.slide-2 {
-    background-image: url('images/hero2.jpg');
-    animation-delay: 5s;
-}
-
-.slide-3 {
-    background-image: url('images/hero3.jpg');
-    animation-delay: 10s;
-}
-
-@keyframes fadeSlideshow {
-    0% { opacity: 0; }
-    10% { opacity: 1; }
-    33% { opacity: 1; }
-    43% { opacity: 0; }
-    100% { opacity: 0; }
-}
-
-.hero-overlay {
-    position: relative;
-    z-index: 2; 
-    background: transparent;
-    width: 100%;
-    height: 100%;
+    background: rgba(35, 20, 45, 0.45); /* Gleichmäßige, vollständige Abdunklung */
+    z-index: 2;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 0 20px;
+    box-sizing: border-box;
 }
 
+/* 3. Textinhalt im Vordergrund */
 .hero-content {
+    position: relative;
+    z-index: 3;
     text-align: center;
     color: #ffffff;
-    padding: 0 20px;
+    max-width: 700px;
+    margin: 0 auto;
 }
 
 .hero-content h1 {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 68px;
+    font-size: clamp(36px, 7vw, 64px);
+    line-height: 1.15;
     color: #ffffff;
-    letter-spacing: 4px;
-    margin-bottom: 10px;
-    text-shadow: 0 3px 15px rgba(0, 0, 0, 0.5);
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.6);
 }
 
 .hero-subtitle {
-    font-size: 22px;
+    font-size: clamp(16px, 3.5vw, 22px);
     font-style: italic;
     font-weight: 300;
-    letter-spacing: 2px;
-    color: #f3edf7;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-    margin-bottom: 40px;
+    letter-spacing: 1.5px;
+    color: #f6eef9;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+    margin-bottom: 30px;
 }
 
 .scroll-down-arrow {
     display: inline-block;
     color: #ffffff;
-    font-size: 32px;
+    font-size: 26px;
     text-decoration: none;
     animation: bounce 2s infinite;
-    opacity: 0.85;
 }
-
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-    40% { transform: translateY(-10px); }
-    60% { transform: translateY(-5px); }
-}
-
+/* ==========================================
+   PHILOSOPHIE & WILLKOMMENS-KARTE
+   ========================================== */
 .philosophy-section {
     position: relative;
     z-index: 10;
     padding-top: 0;
+    padding-bottom: 0px;	
     background-color: #faf8fb;
 }
 
@@ -274,6 +263,9 @@ p {
     padding-bottom: 8px;
 }
 
+/* ==========================================
+   PRODUKT-GRID
+   ========================================== */
 .product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -390,6 +382,9 @@ hr {
     margin-top: 15px;
 }
 
+/* ==========================================
+   FOOTER
+   ========================================== */
 footer {
     background-color: #4a3656;
     color: #ebdff2;
@@ -459,89 +454,345 @@ footer a:hover {
     transform: translateY(-3px);
 }
 
-.modal-overlay {
-    position: fixed;
+/* ==========================================
+   READ MORE TOGGLE (Chi Siamo mobil)
+   ========================================== */
+.read-more-toggle {
+    display: none;
+}
+
+.more-content {
+    display: none;
+    padding-top: 15px;
+    animation: fadeInText 0.4s ease-in-out;
+}
+
+.read-more-toggle:checked ~ .more-content {
+    display: block;
+}
+
+.read-more-btn {
+    display: inline-block;
+    padding: 10px 22px;
+    background-color: #faf8fb;
+    color: #6b527d;
+    border: 1px solid #e8e2eb;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+}
+
+.read-more-btn:hover {
+    background-color: #8a6f9f;
+    color: #ffffff;
+    border-color: #8a6f9f;
+    box-shadow: 0 4px 12px rgba(138, 111, 159, 0.2);
+}
+
+.read-more-toggle:not(:checked) ~ .read-more-btn .btn-text-less {
+    display: none;
+}
+
+.read-more-toggle:checked ~ .read-more-btn .btn-text-more {
+    display: none;
+}
+
+@keyframes fadeInText {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (min-width: 769px) {
+    .read-more-btn {
+        display: none !important;
+    }
+    
+    .more-content {
+        display: block !important;
+    }
+}
+
+/* ==========================================
+   INKLUSION MOSAIK
+   ========================================== */
+.inclusion-mosaic {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 15px !important;
+    margin-top: 25px !important;
+}
+
+.mosaic-card {
+    position: relative !important;
+    border-radius: 12px !important;
+    overflow: hidden !important; 
+    background-color: #f2eff4 !important;
+    width: 100% !important;
+    height: 220px !important;    
+    box-shadow: 0 4px 15px rgba(107, 82, 125, 0.12) !important;
+}
+
+.mosaic-card img {
+    width: 100% !important;
+    height: 100% !important;
+    min-width: 100% !important;
+    min-height: 100% !important;
+    object-fit: cover !important; 
+    object-position: center !important;
+    display: block !important;
+}
+
+.mosaic-card.card-2 {
+    margin-top: 20px !important;
+}
+
+/* ==========================================
+   POLAROID-SLIDESHOW (Unten in Agricoltura Sociale)
+   ========================================== */
+/* ==========================================
+   POLAROID-SLIDESHOW (RESPONSIV & VOLLSTÄNDIGER WECHSEL)
+   ========================================== */
+.video-polaroid {
+    background: #ffffff;
+    padding: 14px 14px 22px 14px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    transform: rotate(-1.5deg);
+    transition: transform 0.4s ease;
+    margin: 40px auto 20px;
+    max-width: 720px;
+    width: 100%;
+}
+
+.video-polaroid:hover {
+    transform: rotate(0deg) scale(1.01);
+}
+
+/* Responsives Seitenverhältnis für Handys & Desktop */
+.polaroid-slideshow {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9; /* Garantiert perfekte Proportionen auf allen Geräten */
+    min-height: 220px;
+    max-height: 420px;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #2b1f33;
+}
+
+/* Grundregeln für alle Slides */
+.polaroid-slideshow .slide {
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(4px);
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
+    animation: fadeSlideshow 12s infinite ease-in-out;
 }
 
-.modal-overlay:target {
+/* Bild 1 */
+.polaroid-slideshow .slide-1 {
+    background-image: url('images/hero.jpg');
+    animation-delay: 0s;
+}
+
+/* Bild 2 */
+.polaroid-slideshow .slide-2 {
+    background-image: url('images/hero2.jpg');
+    animation-delay: 4s;
+}
+
+/* Bild 3 */
+.polaroid-slideshow .slide-3 {
+    background-image: url('images/hero3.jpg');
+    animation-delay: 8s;
+}
+
+/* Saubere Überblendung für 3 Bilder im 12-Sekunden-Zyklus */
+@keyframes fadeSlideshow {
+    0% {
+        opacity: 0;
+    }
+    10% {
+        opacity: 1; /* Eingeblendet */
+    }
+    33% {
+        opacity: 1; /* Sichtbar */
+    }
+    43% {
+        opacity: 0; /* Ausblenden */
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.video-caption {
+    text-align: center;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    color: #6b527d;
+    margin-top: 14px;
+    font-size: 16px;
+}
+
+/* ==========================================
+   REVEAL-ANIMATION (SCROLL-EFFEKT)
+   ========================================== */
+.reveal-element {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal-element.active {
     opacity: 1;
-    visibility: visible;
-}
-
-.modal-box {
-    background: #ffffff;
-    padding: 35px 30px;
-    border-radius: 12px;
-    max-width: 550px;
-    width: 90%;
-    position: relative;
-    z-index: 1001;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-    transform: translateY(-20px);
-    transition: transform 0.3s ease;
-}
-
-.modal-overlay:target .modal-box {
     transform: translateY(0);
 }
 
-.close-btn {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    font-size: 28px;
-    color: #8a6f9f;
-    text-decoration: none;
-    font-weight: bold;
-    line-height: 1;
-    transition: color 0.2s;
+/* ==========================================
+   2x2 GRID GALERIE (Bomboniere)
+   ========================================== */
+.grid-gallery-2x2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 25px;
+    margin-bottom: 25px;
 }
 
-.close-btn:hover {
-    color: #4a3656;
+.grid-gallery-item {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(107, 82, 125, 0.1);
 }
 
-.modal-backdrop-close {
+.grid-gallery-item img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.grid-gallery-item:hover img {
+    transform: scale(1.03);
+}
+
+/* ==========================================
+   HARVEST TIMELINE (Ernteprozess)
+   ========================================== */
+.harvest-timeline {
+    position: relative;
+    padding: 20px 0;
+    margin: 40px 0;
+}
+
+.timeline-container {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.timeline-container::after {
+    content: '';
     position: absolute;
+    width: 3px;
+    background: linear-gradient(180deg, #8a6f9f 0%, #e8e2eb 100%);
     top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -1.5px;
+    border-radius: 2px;
+}
+
+.timeline-item {
+    padding: 10px 30px;
+    position: relative;
+    background-color: inherit;
+    width: 50%;
+}
+
+.timeline-item.left {
     left: 0;
+}
+
+.timeline-item.right {
+    left: 50%;
+}
+
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    right: -8px;
+    background-color: #faf8fb;
+    border: 3px solid #8a6f9f;
+    top: 25px;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.timeline-item.right::after {
+    left: -8px;
+}
+
+.timeline-content {
+    padding: 22px;
+    background-color: #ffffff;
+    position: relative;
+    border-radius: 12px;
+    border: 1px solid #e8e2eb;
+    box-shadow: 0 6px 18px rgba(107, 82, 125, 0.08);
+}
+
+.timeline-content h4 {
+    font-family: 'Playfair Display', Georgia, serif;
+    color: #4a3656;
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.timeline-content p {
+    font-size: 14.5px;
+    color: #554d5a;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.timeline-img-box {
+    width: 100%;
+    height: 160px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.timeline-img-box img {
     width: 100%;
     height: 100%;
-    z-index: 1000;
-    cursor: default;
+    object-fit: cover;
+    display: block;
 }
 
-.impressum-content {
-    font-size: 15px;
-    color: #3d3a3e;
-    margin-top: 15px;
-}
-
-.impressum-content p {
-    margin-bottom: 10px;
-}
-
-.impressum-content .disclaimer {
-    margin-top: 15px;
-    padding-top: 15px;
-    border-top: 1px solid #e8e2eb;
-    font-size: 13px;
-    color: #777;
-}
-
+/* ==========================================
+   RESPONSIVE DESIGN (MEDIA QUERIES)
+   ========================================== */
 @media (max-width: 900px) {
     html {
         scroll-padding-top: 130px;
@@ -657,6 +908,34 @@ footer a:hover {
     }
 }
 
+@media (max-width: 768px) {
+    .timeline-container::after {
+        left: 20px;
+    }
+
+    .timeline-item {
+        width: 100%;
+        padding-left: 50px;
+        padding-right: 10px;
+        margin-bottom: 25px;
+    }
+
+    .timeline-item.left,
+    .timeline-item.right {
+        left: 0;
+    }
+
+    .timeline-item.left::after,
+    .timeline-item.right::after {
+        left: 12px;
+        top: 22px;
+    }
+
+    .polaroid-slideshow {
+        height: 260px;
+    }
+}
+
 @media (max-width: 600px) {
     .powered-by {
         flex-direction: row;
@@ -695,203 +974,7 @@ footer a:hover {
         background: #8a6f9f;
         border-radius: 10px;
     }
-}
 
-.read-more-toggle {
-    display: none;
-}
-
-.more-content {
-    display: none;
-    padding-top: 15px;
-    animation: fadeInText 0.4s ease-in-out;
-}
-
-.read-more-toggle:checked ~ .more-content {
-    display: block;
-}
-
-.read-more-btn {
-    display: inline-block;
-    padding: 10px 22px;
-    background-color: #faf8fb;
-    color: #6b527d;
-    border: 1px solid #e8e2eb;
-    border-radius: 25px;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    text-align: center;
-    transition: all 0.3s ease;
-    margin-top: 15px;
-}
-
-.read-more-btn:hover {
-    background-color: #8a6f9f;
-    color: #ffffff;
-    border-color: #8a6f9f;
-    box-shadow: 0 4px 12px rgba(138, 111, 159, 0.2);
-}
-
-.read-more-toggle:not(:checked) ~ .read-more-btn .btn-text-less {
-    display: none;
-}
-
-.read-more-toggle:checked ~ .read-more-btn .btn-text-more {
-    display: none;
-}
-
-@keyframes fadeInText {
-    from {
-        opacity: 0;
-        transform: translateY(-8px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@media (min-width: 769px) {
-    .read-more-btn {
-        display: none !important;
-    }
-    
-    .more-content {
-        display: block !important;
-    }
-}
-
-.inclusion-mosaic {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr !important;
-    gap: 15px !important;
-    margin-top: 25px !important;
-}
-
-.mosaic-card {
-    position: relative !important;
-    border-radius: 12px !important;
-    overflow: hidden !important; 
-    background-color: #f2eff4 !important;
-    width: 100% !important;
-    height: 220px !important;    
-    box-shadow: 0 4px 15px rgba(107, 82, 125, 0.12) !important;
-}
-
-.mosaic-card img {
-    width: 100% !important;
-    height: 100% !important;
-    min-width: 100% !important;
-    min-height: 100% !important;
-    object-fit: cover !important; 
-    object-position: center !important;
-    display: block !important;
-}
-
-.mosaic-card.card-2 {
-    margin-top: 20px !important;
-}
-
-.mosaic-tag {
-    position: absolute !important;
-    bottom: 10px !important;
-    left: 10px !important;
-    background: rgba(255, 255, 255, 0.9) !important;
-    color: #4a3656 !important;
-    padding: 4px 12px !important;
-    border-radius: 20px !important;
-    font-size: 12px !important;
-    font-weight: 700 !important;
-    z-index: 2 !important;
-}
-
-.organic-divider {
-    height: 3px;
-    background: linear-gradient(90deg, transparent, #8a6f9f, transparent);
-    border: none;
-    margin: 30px auto;
-    width: 60%;
-    opacity: 0.4;
-}
-
-.video-polaroid {
-    background: #ffffff;
-    padding: 15px 15px 25px 15px;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-    transform: rotate(-1.5deg);
-    transition: transform 0.4s ease;
-    margin: 40px auto;
-    max-width: 800px;
-}
-
-.video-polaroid:hover {
-    transform: rotate(0deg) scale(1.01);
-}
-
-.field-video {
-    width: 100%;
-    height: 380px;
-    object-fit: cover;
-    border-radius: 6px;
-    display: block;
-}
-
-.video-caption {
-    text-align: center;
-    font-family: 'Playfair Display', Georgia, serif;
-    font-style: italic;
-    color: #6b527d;
-    margin-top: 15px;
-    font-size: 16px;
-}
-/* Das Element, das animiert werden soll */
-.reveal-element {
-    opacity: 0;                             /* Völlig unsichtbar */
-    transform: translateY(40px);            /* 40 Pixel nach unten verschoben */
-    transition: opacity 0.8s ease, transform 0.8s ease; /* Die Dauer und Art der Bewegung */
-}
-
-/* Wenn die Klasse .active hinzugefügt wird, wandert es an seinen Ursprung zurück */
-.reveal-element.active {
-    opacity: 1;                             /* Voll sichtbar */
-    transform: translateY(0);               /* Ursprungsposition */
-}
-
-/* ==========================================
-   ISOLIERTE 2x2 GRID GALERIE (Mobile Slider)
-   ========================================== */
-
-.grid-gallery-2x2 {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    margin-top: 25px;
-    margin-bottom: 25px;
-}
-
-.grid-gallery-item {
-    width: 100%;
-    overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(107, 82, 125, 0.1);
-}
-
-.grid-gallery-item img {
-    width: 100%;
-    height: 260px;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.4s ease;
-}
-
-.grid-gallery-item:hover img {
-    transform: scale(1.03);
-}
-
-/* Mobil-Anpassung: Schaltet unter 600px auf horizontalen Slider um */
-@media (max-width: 600px) {
     .grid-gallery-2x2 {
         display: flex !important;
         overflow-x: auto !important;
@@ -903,7 +986,7 @@ footer a:hover {
     }
 
     .grid-gallery-item {
-        flex: 0 0 82% !important; /* Kartenausschnitt: Nächstes Bild lugt rechts dezent hervor */
+        flex: 0 0 82% !important;
         scroll-snap-align: start !important;
     }
 
@@ -924,139 +1007,31 @@ footer a:hover {
         background: #8a6f9f;
         border-radius: 10px;
     }
-}
-/* ==========================================
-   HARVEST TIMELINE (Ernteprozess-Zeitleiste)
-   ========================================== */
-
-.harvest-timeline {
-    position: relative;
-    padding: 20px 0;
-    margin: 40px 0;
+.gallery-dots {
+    display: none;
 }
 
-/* Die mittlere vertikale Linie */
-.timeline-container {
-    position: relative;
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.timeline-container::after {
-    content: '';
-    position: absolute;
-    width: 3px;
-    background: linear-gradient(180deg, #8a6f9f 0%, #e8e2eb 100%);
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    margin-left: -1.5px;
-    border-radius: 2px;
-}
-
-/* Timeline Blöcke */
-.timeline-item {
-    padding: 10px 30px;
-    position: relative;
-    background-color: inherit;
-    width: 50%;
-}
-
-.timeline-item.left {
-    left: 0;
-}
-
-.timeline-item.right {
-    left: 50%;
-}
-
-/* Punkte auf der Zeitachse */
-.timeline-item::after {
-    content: '';
-    position: absolute;
-    width: 16px;
-    height: 16px;
-    right: -8px;
-    background-color: #faf8fb;
-    border: 3px solid #8a6f9f;
-    top: 25px;
-    border-radius: 50%;
-    z-index: 1;
-}
-
-.timeline-item.right::after {
-    left: -8px;
-}
-
-/* Karten-Inhalt */
-.timeline-content {
-    padding: 22px;
-    background-color: #ffffff;
-    position: relative;
-    border-radius: 12px;
-    border: 1px solid #e8e2eb;
-    box-shadow: 0 6px 18px rgba(107, 82, 125, 0.08);
-}
-
-.timeline-step {
-    font-size: 12px;
-    font-weight: 700;
-    color: #8a6f9f;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    display: block;
-    margin-bottom: 5px;
-}
-
-.timeline-content h4 {
-    font-family: 'Playfair Display', Georgia, serif;
-    color: #4a3656;
-    font-size: 20px;
-    margin-bottom: 8px;
-}
-
-.timeline-content p {
-    font-size: 14.5px;
-    color: #554d5a;
-    line-height: 1.5;
-    margin-bottom: 15px;
-}
-
-.timeline-img-box {
-    width: 100%;
-    height: 160px;
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-.timeline-img-box img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-/* Mobile Optimierung: Vertikaler Fluss unter 768px */
-@media (max-width: 768px) {
-    .timeline-container::after {
-        left: 20px;
+@media (max-width: 600px) {
+    .gallery-dots {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        margin: 10px 0 20px 0;
     }
 
-    .timeline-item {
-        width: 100%;
-        padding-left: 50px;
-        padding-right: 10px;
-        margin-bottom: 25px;
+    .dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background-color: #d8cde0;
+        transition: all 0.3s ease;
     }
 
-    .timeline-item.left,
-    .timeline-item.right {
-        left: 0;
+    .dot.active {
+        width: 20px;
+        border-radius: 10px;
+        background-color: #8a6f9f;
     }
-
-    .timeline-item.left::after,
-    .timeline-item.right::after {
-        left: 12px;
-        top: 22px;
-    }
+}
 }

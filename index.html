@@ -59,12 +59,12 @@
 </header>
 
     <section id="chi-siamo" class="hero-section">
-        <div class="hero-slideshow">
-            <div class="slide slide-1"></div>
-            <div class="slide slide-2"></div>
-            <div class="slide slide-3"></div>
-        </div>
+        <!-- Hintergrundvideo im Vollbild -->
+        <video autoplay loop muted playsinline id="hero-video" class="hero-bg-video">
+            <source src="videos/kids_run.mp4" type="video/mp4">
+        </video>
 
+        <!-- Dunklerer Schleier damit Text perfekt lesbar bleibt -->
         <div class="hero-overlay">
             <div class="hero-content">
                 <h1>Tinifa</h1>
@@ -134,7 +134,11 @@
                 <img src="images/luogo-3.jpg" alt="Tinifa Lettura nel campo">
             </div>
         </div>
-        <p class="slider-hint">👈 Scorri per vedere di più 👉</p>
+        <div class="gallery-dots">
+    <span class="dot active"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+</div>
 
         <div class="highlight-box reveal-element">
             <h3>Un Luogo d’Incontro e Condivisione</h3>
@@ -148,11 +152,13 @@
         </div>
 
         <div class="video-polaroid reveal-element">
-            <video autoplay loop muted playsinline class="field-video" id="scroll-video">
-                <source src="videos/kids_run.mp4" type="video/mp4">
-                Ihr Browser unterstützt dieses Video nicht.
-            </video>
-        </div>
+    <div class="polaroid-slideshow">
+        <div class="slide slide-1"></div>
+        <div class="slide slide-2"></div>
+        <div class="slide slide-3"></div>
+    </div>
+    <p class="video-caption">Momenti nel mio campo</p>
+</div>
     </div>
 </section>
 
@@ -217,8 +223,8 @@
                     <div class="timeline-item left">
                         <div class="timeline-content">
 
-                            <h4>Trasformazione</h4>
-                            <p></p>
+                            <h4>Produzione</h4>
+                            <p>L'olio essenziale e la cosmesi vengono realizzati in collaborazione con un istituto di formazione e un laboratorio erboristico. Cuscini, sacchetti e altri prodotti artigianali sono realizzati a mano da me, insieme a persone con disabilità e fragilità.</p>
                             <div class="timeline-img-box">
                                 <img src="images/produtti.jpeg" alt="Estrazione in laboratorio">
                             </div>
