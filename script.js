@@ -3,17 +3,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. HERO VIDEO SLOW-MOTION (0.5 = 50 % Geschwindigkeit)
     const heroVideo = document.getElementById('hero-video');
     if (heroVideo) {
-        // Stellt sicher, dass das Video stumm bleibt (Voraussetzung für Autoplay auf Handys)
+      
         heroVideo.muted = true;
-        heroVideo.playbackRate = 0.5;
+        heroVideo.playbackRate = 0.8;
 
-        // Startet das Video sicher, fängt eventuelle Browser-Blockaden ab
+
         heroVideo.play().catch(error => {
             console.log("Autoplay wurde vom Browser verzögert:", error);
         });
     }
 
-    // 2. MOBILES MENÜ SCHLIESSEN BEI KLICK
+
     const navLinks = document.querySelectorAll('nav ul li a');
     const navToggle = document.getElementById('nav-toggle');
 
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 3. SCROLL-ANIMATION FÜR REVEAL-ELEMENTE (.reveal-element)
+
     const targets = document.querySelectorAll('.reveal-element');
 
     if (targets.length > 0 && 'IntersectionObserver' in window) {
@@ -48,11 +48,11 @@ document.addEventListener('DOMContentLoaded', () => {
             revealObserver.observe(target);
         });
     } else {
-        // Fallback für ältere Browser: Elemente direkt sichtbar schalten
+        
         targets.forEach(target => target.classList.add('active'));
     }
 
-    // 4. NETLIFY IDENTITY (ADMIN LOGIN)
+    
     if (window.netlifyIdentity) {
         window.netlifyIdentity.on("init", user => {
             if (!user) {
@@ -62,13 +62,13 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-// 5. SLIDER-DOTS MIT SCROLL-POSITION SYNCHRONISIEREN
+
     const gallery = document.querySelector('.image-gallery');
     const dots = document.querySelectorAll('.gallery-dots .dot');
 
     if (gallery && dots.length > 0) {
         gallery.addEventListener('scroll', () => {
-            // Berechnet das aktuell sichtbare Bild anhand der horizontalen Scroll-Position
+            
             const scrollLeft = gallery.scrollLeft;
             const itemWidth = gallery.querySelector('.gallery-item')?.offsetWidth || gallery.offsetWidth;
             const activeIndex = Math.round(scrollLeft / itemWidth);
@@ -82,8 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // Optional: Beim Klick/Tippen auf einen Punkt direkt zum Bild scrollen
-        dots.forEach((dot, index) => {
+                dots.forEach((dot, index) => {
             dot.addEventListener('click', () => {
                 const items = gallery.querySelectorAll('.gallery-item');
                 if (items[index]) {

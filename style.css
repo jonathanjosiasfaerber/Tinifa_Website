@@ -22,9 +22,6 @@ body {
     padding: 40px 20px;
 }
 
-/* ==========================================
-   NAVIGATION / HEADER
-   ========================================== */
 header {
     background-color: rgba(255, 255, 255, 0.95);
     position: sticky;
@@ -116,12 +113,7 @@ nav ul.nav-links li a:hover {
     transition: all 0.3s ease;
 }
 
-/* ==========================================
-   HERO VIDEO HINTERGRUND
-   ========================================== */
-/* ==========================================
-   3. HERO VIDEO BEREICH (VOLLSTÄNDIGES OVERLAY)
-   ========================================== */
+
 .hero-section {
     position: relative;
     width: 100%;
@@ -134,7 +126,7 @@ nav ul.nav-links li a:hover {
     justify-content: center;
 }
 
-/* 1. Hintergrund-Video füllt 100% aus */
+
 .hero-bg-video {
     position: absolute;
     top: 50%;
@@ -148,7 +140,7 @@ nav ul.nav-links li a:hover {
     pointer-events: none;
 }
 
-/* 2. Dunkler Schleier: Zieht sich garantiert über das GANZE Video */
+
 .hero-overlay {
     position: absolute;
     top: 0;
@@ -157,7 +149,7 @@ nav ul.nav-links li a:hover {
     bottom: 0;
     width: 100%;
     height: 100%;
-    background: rgba(35, 20, 45, 0.45); /* Gleichmäßige, vollständige Abdunklung */
+    background: rgba(35, 20, 45, 0.45); 
     z-index: 2;
     display: flex;
     align-items: center;
@@ -166,7 +158,7 @@ nav ul.nav-links li a:hover {
     box-sizing: border-box;
 }
 
-/* 3. Textinhalt im Vordergrund */
+
 .hero-content {
     position: relative;
     z-index: 3;
@@ -202,9 +194,7 @@ nav ul.nav-links li a:hover {
     text-decoration: none;
     animation: bounce 2s infinite;
 }
-/* ==========================================
-   PHILOSOPHIE & WILLKOMMENS-KARTE
-   ========================================== */
+
 .philosophy-section {
     position: relative;
     z-index: 10;
@@ -263,9 +253,7 @@ p {
     padding-bottom: 8px;
 }
 
-/* ==========================================
-   PRODUKT-GRID
-   ========================================== */
+
 .product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -382,9 +370,7 @@ hr {
     margin-top: 15px;
 }
 
-/* ==========================================
-   FOOTER
-   ========================================== */
+
 footer {
     background-color: #4a3656;
     color: #ebdff2;
@@ -454,9 +440,7 @@ footer a:hover {
     transform: translateY(-3px);
 }
 
-/* ==========================================
-   READ MORE TOGGLE (Chi Siamo mobil)
-   ========================================== */
+
 .read-more-toggle {
     display: none;
 }
@@ -522,9 +506,7 @@ footer a:hover {
     }
 }
 
-/* ==========================================
-   INKLUSION MOSAIK
-   ========================================== */
+
 .inclusion-mosaic {
     display: grid !important;
     grid-template-columns: 1fr 1fr !important;
@@ -556,12 +538,7 @@ footer a:hover {
     margin-top: 20px !important;
 }
 
-/* ==========================================
-   POLAROID-SLIDESHOW (Unten in Agricoltura Sociale)
-   ========================================== */
-/* ==========================================
-   POLAROID-SLIDESHOW (RESPONSIV & VOLLSTÄNDIGER WECHSEL)
-   ========================================== */
+
 .video-polaroid {
     background: #ffffff;
     padding: 14px 14px 22px 14px;
@@ -578,11 +555,11 @@ footer a:hover {
     transform: rotate(0deg) scale(1.01);
 }
 
-/* Responsives Seitenverhältnis für Handys & Desktop */
+
 .polaroid-slideshow {
     position: relative;
     width: 100%;
-    aspect-ratio: 16 / 9; /* Garantiert perfekte Proportionen auf allen Geräten */
+    aspect-ratio: 16 / 9; 
     min-height: 220px;
     max-height: 420px;
     border-radius: 8px;
@@ -590,7 +567,7 @@ footer a:hover {
     background-color: #2b1f33;
 }
 
-/* Grundregeln für alle Slides */
+
 .polaroid-slideshow .slide {
     position: absolute;
     top: 0;
@@ -604,37 +581,37 @@ footer a:hover {
     animation: fadeSlideshow 12s infinite ease-in-out;
 }
 
-/* Bild 1 */
+
 .polaroid-slideshow .slide-1 {
     background-image: url('images/hero.jpg');
     animation-delay: 0s;
 }
 
-/* Bild 2 */
+
 .polaroid-slideshow .slide-2 {
     background-image: url('images/hero2.jpg');
     animation-delay: 4s;
 }
 
-/* Bild 3 */
+
 .polaroid-slideshow .slide-3 {
     background-image: url('images/hero3.jpg');
     animation-delay: 8s;
 }
 
-/* Saubere Überblendung für 3 Bilder im 12-Sekunden-Zyklus */
+
 @keyframes fadeSlideshow {
     0% {
         opacity: 0;
     }
     10% {
-        opacity: 1; /* Eingeblendet */
+        opacity: 1; 
     }
     33% {
-        opacity: 1; /* Sichtbar */
+        opacity: 1; 
     }
     43% {
-        opacity: 0; /* Ausblenden */
+        opacity: 0; 
     }
     100% {
         opacity: 0;
@@ -650,9 +627,7 @@ footer a:hover {
     font-size: 16px;
 }
 
-/* ==========================================
-   REVEAL-ANIMATION (SCROLL-EFFEKT)
-   ========================================== */
+
 .reveal-element {
     opacity: 0;
     transform: translateY(40px);
@@ -664,9 +639,7 @@ footer a:hover {
     transform: translateY(0);
 }
 
-/* ==========================================
-   2x2 GRID GALERIE (Bomboniere)
-   ========================================== */
+
 .grid-gallery-2x2 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -694,9 +667,7 @@ footer a:hover {
     transform: scale(1.03);
 }
 
-/* ==========================================
-   HARVEST TIMELINE (Ernteprozess)
-   ========================================== */
+
 .harvest-timeline {
     position: relative;
     padding: 20px 0;
@@ -778,7 +749,8 @@ footer a:hover {
 
 .timeline-img-box {
     width: 100%;
-    height: 160px;
+    height: 240px;
+    aspect-ratio: 4 / 3;	
     border-radius: 8px;
     overflow: hidden;
 }
@@ -790,9 +762,7 @@ footer a:hover {
     display: block;
 }
 
-/* ==========================================
-   RESPONSIVE DESIGN (MEDIA QUERIES)
-   ========================================== */
+
 @media (max-width: 900px) {
     html {
         scroll-padding-top: 130px;
@@ -880,7 +850,8 @@ footer a:hover {
     }
 
     .gallery-item img {
-        height: 240px;
+        height: 420px;
+	aspect-ratio: 16 / 10;
     }
 
     .slider-hint {
@@ -905,6 +876,15 @@ footer a:hover {
     .image-gallery::-webkit-scrollbar-thumb {
         background: #8a6f9f;
         border-radius: 10px;
+    }
+	
+    .mosaic-card {
+        height: 300px !important;
+    }
+
+    
+    .grid-gallery-item img {
+        height: 320px;
     }
 }
 
